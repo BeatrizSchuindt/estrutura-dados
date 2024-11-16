@@ -69,13 +69,13 @@ int main()
                 printf("\n##### EXIBIR ELEMENTOS #####");
                 if(p) {
                     if (!lista_vazia(p)) { 
-                        printf("Exibindo elementos da lista: ");
+                        printf("\nExibindo elementos da lista: ");
                         exibir(p);
                     } else {
                         printf("\nSem elementos...\n");
                     }
                 } else {
-                    printf("Nenhuma lista foi encontrada... Tente novamente.\n");
+                    printf("\nNenhuma lista foi encontrada... Tente novamente.\n");
                 }
                 
                 printf("\n");
