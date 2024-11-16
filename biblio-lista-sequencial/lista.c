@@ -32,3 +32,8 @@ void exibir(Lista p)
        i++;
     }
 }
+
+void destruir(Lista p){
+    free(p->item);
+    free(p);
+}
