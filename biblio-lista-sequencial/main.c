@@ -41,23 +41,27 @@ int main()
                 printf("\nVocê digitou a opção 2!\n");
                 printf("\n##### INSERIR ELEMENTOS NA LISTA #####");
                 
-                for(int i=1;;i++) {
-                    x.id=i;
-                    x.nome=malloc(30*sizeof(char));
-                    
-                    printf("\nDigite um nome ");
-                    scanf("%s",nomeaux);
-                    strcpy(x.nome,nomeaux);
-       
-                    p = inserir(x,p);
-                    
-                    printf("\nDigite 1 para CONTINUAR.\nDigite 2 para PARAR");
-                    printf("\nDeseja continuar? ");
-                    scanf("%d",&op);
-                    
-                    if(op!=1)
-                        break;
-                    }
+                if(p) {
+                    for(int i=1;;i++) {
+                        x.id=i;
+                        x.nome=malloc(30*sizeof(char));
+                        
+                        printf("\nDigite um nome ");
+                        scanf("%s",nomeaux);
+                        strcpy(x.nome,nomeaux);
+        
+                        p = inserir(x,p);
+                        
+                        printf("\nDigite 1 para CONTINUAR.\nDigite 2 para PARAR");
+                        printf("\nDeseja continuar? ");
+                        scanf("%d",&op);
+                        
+                        if(op!=1)
+                            break;
+                        }
+                } else {
+                    printf("\nNenhuma lista foi encontrada... Tente novamente.\n");
+                }
                 break;
             
             case 3:
@@ -112,7 +116,7 @@ int main()
                         printf("\nLista está vazia. Nenhum elemento para buscar.\n");
                     }
                 } else {
-                    printf("\nNenhuma lista foi criada. Crie uma lista primeiro.\n");
+                    printf("\nNenhuma lista foi encontrada. Crie uma lista primeiro.\n");
                 }
             break;
             
