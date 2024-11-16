@@ -24,3 +24,4 @@ void exibir(Lista l);
 //remoção meio
 //remoção fim
 //busca/pertinência
+void destruir(Lista p);//destruição
