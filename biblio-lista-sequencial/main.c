@@ -95,6 +95,25 @@ int main()
             case 7:
                 printf("\nVocê digitou a opção 7!\n");
                 printf("\n##### BUSCAR ELEMENTOS #####\n");
+                if (p) { 
+                    if (!lista_vazia(p)) { 
+                        int id;
+                        printf("\nDigite o ID do elemento que deseja buscar: ");
+                        scanf("%d", &id);
+                        Item resultado;
+                        if (buscar(p, id, &resultado)) {
+                            printf("\nElemento encontrado:\n");
+                            printf("ID: %d\n", resultado.id);
+                            printf("Nome: %s\n", resultado.nome);
+                        } else {
+                            printf("\nElemento com ID %d não encontrado.\n", id);
+                        }
+                    } else {
+                        printf("\nLista está vazia. Nenhum elemento para buscar.\n");
+                    }
+                } else {
+                    printf("\nNenhuma lista foi criada. Crie uma lista primeiro.\n");
+                }
             break;
             
             case 8:
