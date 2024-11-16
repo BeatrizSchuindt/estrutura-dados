@@ -64,7 +64,12 @@ int main()
                 printf("\nVocê digitou a opção 3!\n");
                 printf("\n##### EXIBIR ELEMENTOS #####\n");
                 if(p) {
-                    exibir(p);
+                    if (!lista_vazia(p)) { 
+                        printf("Exibindo elementos da lista: ");
+                        exibir(p);
+                    } else {
+                        printf("\nSem elementos...\n");
+                    }
                 } else {
                     printf("Nenhuma lista foi encontrada... Tente novamente.\n");
                 }
