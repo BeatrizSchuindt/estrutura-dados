@@ -25,3 +25,6 @@ void exibir(Lista l);
 //remoção fim
 //busca/pertinência
 void destruir(Lista p);//destruição
+
+//bônus
+int lista_vazia(Lista p);
