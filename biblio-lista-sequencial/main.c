@@ -29,8 +29,8 @@ int main()
         switch(opcao) {
             case 1:
                 printf("\nVocê digitou a opção 1!\n");
-                printf("\n##### CRIAR UMA LISTA #####\n");
-                printf("Digite o tamanho da lista desejada: ");
+                printf("\n##### CRIAR UMA LISTA #####");
+                printf("\nDigite o tamanho da lista desejada: ");
                 scanf("%d", &tamanho);
                 p = criar(tamanho);
                 
@@ -66,7 +66,7 @@ int main()
             
             case 3:
                 printf("\nVocê digitou a opção 3!\n");
-                printf("\n##### EXIBIR ELEMENTOS #####\n");
+                printf("\n##### EXIBIR ELEMENTOS #####");
                 if(p) {
                     if (!lista_vazia(p)) { 
                         printf("Exibindo elementos da lista: ");
@@ -83,22 +83,22 @@ int main()
             
             case 4:
                 printf("\nVocê digitou a opção 4!\n");
-                printf("\n##### REMOÇÃO DO INÍCIO #####\n");
+                printf("\n##### REMOÇÃO DO INÍCIO #####");
             break;
             
             case 5:
                 printf("\nVocê digitou a opção 5!\n");
-                printf("\n##### REMOÇÃO NO MEIO #####\n");
+                printf("\n##### REMOÇÃO NO MEIO #####");
             break;
             
             case 6:
                 printf("\nVocê digitou a opção 6!\n");
-                printf("\n##### REMOÇÃO DO FINAL #####\n");
+                printf("\n##### REMOÇÃO DO FINAL #####");
             break;
             
             case 7:
                 printf("\nVocê digitou a opção 7!\n");
-                printf("\n##### BUSCAR ELEMENTOS #####\n");
+                printf("\n##### BUSCAR ELEMENTOS #####");
                 if (p) { 
                     if (!lista_vazia(p)) { 
                         int id;
@@ -122,16 +122,23 @@ int main()
             
             case 8:
                 printf("\nVocê digitou a opção 8!\n");
-                printf("\n##### DESTRUIR A LISTA #####\n");
-                printf("\n  Digite 1 para SIM\n  Digite 0 para NÃO");
-                printf("\nVocê tem certeza que deseja excluir a lista? ");
-                scanf("%d", &confirmacao);
-                if(confirmacao) {
-                    destruir(p);
-                    p = NULL;
-                    printf("\nLista destruída!\n");
+                printf("\n##### DESTRUIR A LISTA #####");
+                
+                if(p) {
+                    printf("\n  Digite 1 para SIM\n  Digite 0 para NÃO");
+                    printf("\nVocê tem certeza que deseja excluir a lista? ");
+                    scanf("%d", &confirmacao);
+
+                    if(confirmacao) {
+                        destruir(p);
+                        p = NULL;
+                        printf("\nLista destruída!\n");
+                    } else {
+                        break;
+                    }
+
                 } else {
-                    break;
+                    printf("\nNenhuma lista foi encontrada... Tente novamente.\n");
                 }
             break;
             
