@@ -37,3 +37,8 @@ void destruir(Lista p){
     free(p->item);
     free(p);
 }
+
+int lista_vazia(Lista p) {
+    return (p->total == 0);
+}
+
