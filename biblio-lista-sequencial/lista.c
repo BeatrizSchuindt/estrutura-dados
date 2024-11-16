@@ -32,3 +32,27 @@ void exibir(Lista p)
        i++;
     }
 }
+
+int buscar(Lista p, int id, Item *resultado) {
+    if (p == NULL || p->total == 0) {
+        return 0;
+    }
+    
+    for (int i = 0; i < p->total; i++) {
+        if (p->item[i].id == id) { 
+            *resultado = p->item[i]; 
+            return 1; 
+        }
+    }
+    return 0; 
+}
+
+void destruir(Lista p){
+    free(p->item);
+    free(p);
+}
+
+int lista_vazia(Lista p) {
+    return (p->total == 0);
+}
+

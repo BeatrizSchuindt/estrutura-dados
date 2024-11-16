@@ -23,4 +23,8 @@ void exibir(Lista l);
 //remoção inicio
 //remoção meio
 //remoção fim
-//busca/pertinência
+int buscar(Lista p, int id, Item *resultado);//busca/pertinência
+void destruir(Lista p);//destruição
+
+//bônus
+int lista_vazia(Lista p);
