@@ -6,7 +6,7 @@
 
 int main()
 {
-    int op=0, opcao=0, tamanho=0;
+    int op=0, opcao=0, tamanho=0, confirmacao=0;
     char nomeaux[30];
     Item x;
     Lista p = NULL;
@@ -95,6 +95,16 @@ int main()
             case 8:
                 printf("\nVocê digitou a opção 8!\n");
                 printf("\n##### DESTRUIR A LISTA #####\n");
+                printf("\n  Digite 1 para SIM\n  Digite 0 para NÃO");
+                printf("\nVocê tem certeza que deseja excluir a lista? ");
+                scanf("%d", &confirmacao);
+                if(confirmacao) {
+                    destruir(p);
+                    p = NULL;
+                    printf("\nLista destruída!\n");
+                } else {
+                    break;
+                }
             break;
             
             case 9:
