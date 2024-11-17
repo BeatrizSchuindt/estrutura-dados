@@ -20,7 +20,7 @@ typedef struct lista *Lista;
 Lista criar(int tam);
 Lista inserir(Item x,Lista p);
 void exibir(Lista l);
-//remoção inicio
+int remover_inicio(Lista p);
 //remoção meio
 //remoção fim
 int buscar(Lista p, int id, Item *resultado);//busca/pertinência
