@@ -48,6 +48,31 @@ int remover_inicio(Lista p) {
     return 1; 
 }
 
+int remover_meio(Lista p, int id) {
+    if (p == NULL || p->total == 0) { 
+        return 0;
+    }
+
+    int i = 0;
+    
+    while (i < p->total && p->item[i].id != id) {
+        i++;
+    }
+
+    if (i == p->total) { 
+        return 0;
+    }
+
+    free(p->item[i].nome);
+
+    for (int k = i; k < p->total - 1; k++) {
+        p->item[k] = p->item[k + 1];
+    }
+
+    p->total--; 
+    return 1; 
+}
+
 int remover_final(Lista p) {
     if (p == NULL || p->total == 0) { 
         return 0;
