@@ -28,6 +28,7 @@ int main()
         
         switch(opcao) {
             case 1:
+                //to do - criar verificação se há alguma lista já criada em açãos
                 printf("\nVocê digitou a opção 1!\n");
                 printf("\n##### CRIAR UMA LISTA #####");
                 printf("\nDigite o tamanho da lista desejada: ");
@@ -84,16 +85,81 @@ int main()
             case 4:
                 printf("\nVocê digitou a opção 4!\n");
                 printf("\n##### REMOÇÃO DO INÍCIO #####");
+                if (p) { 
+                    if (!lista_vazia(p)) { 
+                        printf("\n  Digite 1 para SIM\n  Digite 0 para NÃO");
+                        printf("\nVocê tem certeza que deseja remover o primeiro elemento? ");
+                        scanf("%d", &confirmacao);
+                        if (confirmacao) {
+                            if (remover_inicio(p)) {
+                                printf("\nPrimeiro elemento removido com sucesso.\n");
+                            } else {
+                                printf("\nFalha ao remover o primeiro elemento.\n");
+                            }
+                        } else {
+                            printf("\nOperação cancelada pelo usuário.\n");
+                        }
+                    } else {
+                        printf("\nA lista está vazia. Não há elementos para remover.\n");
+                    }
+                } else {
+                    printf("\nNenhuma lista foi encontrada. Crie uma lista primeiro.\n");
+                }
             break;
             
             case 5:
                 printf("\nVocê digitou a opção 5!\n");
                 printf("\n##### REMOÇÃO NO MEIO #####");
+                if (p) { 
+                    if (!lista_vazia(p)) {
+                        int id;
+                        printf("\nDigite o ID do elemento que deseja remover: ");
+                        scanf("%d", &id);
+            
+                        printf("\n  Digite 1 para SIM\n  Digite 0 para NÃO");
+                        printf("\nVocê tem certeza que deseja remover o elemento com ID %d? ", id);
+                        scanf("%d", &confirmacao);
+            
+                        if (confirmacao) {
+                            if (remover_meio(p, id)) {
+                                printf("\nElemento com ID %d removido com sucesso.\n", id);
+                            } else {
+                                printf("\nElemento com ID %d não encontrado.\n", id);
+                            }
+                        } else {
+                            printf("\nOperação cancelada pelo usuário.\n");
+                        }
+                    } else {
+                        printf("\nA lista está vazia. Não há elementos para remover.\n");
+                    }
+                } else {
+                    printf("\nNenhuma lista foi encontrada. Crie uma lista primeiro.\n");
+                }
             break;
             
             case 6:
                 printf("\nVocê digitou a opção 6!\n");
                 printf("\n##### REMOÇÃO DO FINAL #####");
+                if (p) {
+                    if (!lista_vazia(p)) { 
+                        printf("\n  Digite 1 para SIM\n  Digite 0 para NÃO");
+                        printf("\nVocê tem certeza que deseja remover o último elemento? ");
+                        scanf("%d", &confirmacao);
+                        if (confirmacao) {
+                            if (remover_final(p)) {
+                                printf("\nÚltimo elemento removido com sucesso.\n");
+                            } else {
+                                printf("\nFalha ao remover o último elemento.\n");
+                            }
+                        } else {
+                            printf("\nOperação cancelada pelo usuário.\n");
+                        }
+                    } else {
+                        printf("\nA lista está vazia. Não há elementos para remover.\n");
+                    }
+                } else {
+                    printf("\nNenhuma lista foi encontrada. Crie uma lista primeiro.\n");
+                }
             break;
             
             case 7:
