@@ -33,6 +33,21 @@ void exibir(Lista p)
     }
 }
 
+int remover_inicio(Lista p) {
+    if (p == NULL || p->total == 0) { 
+        return 0;
+    }
+
+    free(p->item[0].nome);
+
+    for (int i = 0; i < p->total - 1; i++) {
+        p->item[i] = p->item[i + 1];
+    }
+
+    p->total--; 
+    return 1; 
+}
+
 int buscar(Lista p, int id, Item *resultado) {
     if (p == NULL || p->total == 0) {
         return 0;
