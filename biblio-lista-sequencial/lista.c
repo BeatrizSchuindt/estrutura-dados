@@ -48,6 +48,17 @@ int remover_inicio(Lista p) {
     return 1; 
 }
 
+int remover_final(Lista p) {
+    if (p == NULL || p->total == 0) { 
+        return 0;
+    }
+
+    free(p->item[p->total - 1].nome);
+
+    p->total--;
+    return 1;
+}
+
 int buscar(Lista p, int id, Item *resultado) {
     if (p == NULL || p->total == 0) {
         return 0;
