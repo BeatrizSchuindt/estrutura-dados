@@ -21,7 +21,7 @@ Lista criar(int tam);
 Lista inserir(Item x,Lista p);
 void exibir(Lista l);
 int remover_inicio(Lista p);
-//remoção meio
+int remover_meio(Lista p, int id);//remoção meio
 int remover_final(Lista p);//remoção fim
 int buscar(Lista p, int id, Item *resultado);//busca/pertinência
 void destruir(Lista p);//destruição
