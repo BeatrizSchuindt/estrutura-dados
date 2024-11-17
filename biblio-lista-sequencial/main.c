@@ -103,7 +103,7 @@ int main()
                         printf("\nA lista está vazia. Não há elementos para remover.\n");
                     }
                 } else {
-                    printf("\nNenhuma lista foi criada. Crie uma lista primeiro.\n");
+                    printf("\nNenhuma lista foi encontrada. Crie uma lista primeiro.\n");
                 }
             break;
             
@@ -115,6 +115,26 @@ int main()
             case 6:
                 printf("\nVocê digitou a opção 6!\n");
                 printf("\n##### REMOÇÃO DO FINAL #####");
+                if (p) {
+                    if (!lista_vazia(p)) { 
+                        printf("\n  Digite 1 para SIM\n  Digite 0 para NÃO");
+                        printf("\nVocê tem certeza que deseja remover o último elemento? ");
+                        scanf("%d", &confirmacao);
+                        if (confirmacao) {
+                            if (remover_final(p)) {
+                                printf("\nÚltimo elemento removido com sucesso.\n");
+                            } else {
+                                printf("\nFalha ao remover o último elemento.\n");
+                            }
+                        } else {
+                            printf("\nOperação cancelada pelo usuário.\n");
+                        }
+                    } else {
+                        printf("\nA lista está vazia. Não há elementos para remover.\n");
+                    }
+                } else {
+                    printf("\nNenhuma lista foi encontrada. Crie uma lista primeiro.\n");
+                }
             break;
             
             case 7:
