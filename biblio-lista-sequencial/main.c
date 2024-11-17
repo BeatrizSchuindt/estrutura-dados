@@ -110,6 +110,31 @@ int main()
             case 5:
                 printf("\nVocê digitou a opção 5!\n");
                 printf("\n##### REMOÇÃO NO MEIO #####");
+                if (p) { 
+                    if (!lista_vazia(p)) {
+                        int id;
+                        printf("\nDigite o ID do elemento que deseja remover: ");
+                        scanf("%d", &id);
+            
+                        printf("\n  Digite 1 para SIM\n  Digite 0 para NÃO");
+                        printf("\nVocê tem certeza que deseja remover o elemento com ID %d? ", id);
+                        scanf("%d", &confirmacao);
+            
+                        if (confirmacao) {
+                            if (remover_meio(p, id)) {
+                                printf("\nElemento com ID %d removido com sucesso.\n", id);
+                            } else {
+                                printf("\nElemento com ID %d não encontrado.\n", id);
+                            }
+                        } else {
+                            printf("\nOperação cancelada pelo usuário.\n");
+                        }
+                    } else {
+                        printf("\nA lista está vazia. Não há elementos para remover.\n");
+                    }
+                } else {
+                    printf("\nNenhuma lista foi encontrada. Crie uma lista primeiro.\n");
+                }
             break;
             
             case 6:
