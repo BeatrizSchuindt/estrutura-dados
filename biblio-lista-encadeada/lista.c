@@ -142,3 +142,7 @@ void destruir_lista(Lista *p) {
         free(aux);
     }
 }
+
+int lista_vazia(Lista p) {
+    return (p == NULL);
+}
