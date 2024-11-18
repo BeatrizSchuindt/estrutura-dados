@@ -98,7 +98,14 @@ int main() {
 
             case 7:
                 printf("\nVocê digitou a opção 7!");
-                printf("\n##### REMOVER ELEMENTOS DO MEIO #####");
+                printf("\n##### REMOVER ELEMENTOS DO MEIO #####\n");
+                printf("Digite o ID do elemento a ser removido: ");
+                scanf("%d", &id);
+                if (remover_meio(&p, id)) {
+                    printf("Elemento com ID %d removido com sucesso!\n", id);
+                } else {
+                    printf("Elemento com ID %d não encontrado ou erro ao remover.\n", id);
+                }
                 break;
 
             case 8:
