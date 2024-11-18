@@ -24,3 +24,6 @@ int remover_final(Lista *p);//remover do final
 int remover_meio(Lista *p, int id);//remover do meio
 int buscar(Lista p, int id, Item *resultado);//buscar elemento
 void destruir_lista(Lista *p);//destruir a lista
+
+//funçõezinhas 'bônus'
+int lista_vazia(Lista p);
