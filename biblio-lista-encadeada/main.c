@@ -6,6 +6,7 @@
 int main() {
     int opcao=1;
     Item x;
+    int id;
 
     while (opcao != 0) {
         printf("\n---------- MENU DE LISTA ENCADEADA ----------");
@@ -65,7 +66,7 @@ int main() {
 
             case 4:
                 printf("\nVocê digitou a opção 4!");
-                printf("\n##### INSERIR ELEMENTOS DE FORMA ORDENADA #####");
+                printf("\n##### INSERIR ELEMENTOS DE FORMA ORDENADA #####\n");
                 x.nome = malloc(50 * sizeof(char));
                 printf("Digite o ID: ");
                 scanf("%d", &x.id);
@@ -102,7 +103,14 @@ int main() {
 
             case 9:
                 printf("\nVocê digitou a opção 9!");
-                printf("\n##### BUSCAR ELEMENTOS DA LISTA #####");
+                printf("\n##### BUSCAR ELEMENTOS DA LISTA #####\n");
+                printf("Digite o ID do elemento a buscar: ");
+                scanf("%d", &id);
+                if (buscar(p, id, &x)) {
+                    printf("Elemento encontrado: \n   ID = %d\n   Nome = %s\n", x.id, x.nome);
+                } else {
+                    printf("Elemento com ID %d não encontrado.\n", id);
+                }
                 break;
 
             case 10:
