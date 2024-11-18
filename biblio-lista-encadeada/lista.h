@@ -17,7 +17,7 @@ typedef No *Lista;
 Lista criar_lista();//criar
 int inserir_inicio(Lista *p, Item x);//inserir no início
 int inserir_final(Lista *p, Item x);//inserir no final
-//inserir de forma ordenada
+int inserir_ordenado(Lista *p, Item x);//inserir de forma ordenada
 void exibir_lista(Lista p);//exibir elementos
 //remover do início
 //remover do final
