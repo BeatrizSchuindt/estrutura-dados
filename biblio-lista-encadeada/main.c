@@ -60,7 +60,9 @@ int main() {
 
             case 5:
                 printf("\nVocê digitou a opção 5!");
-                printf("\n##### EXIBIR ELEMENTOS DA LISTA #####");
+                printf("\n##### EXIBIR ELEMENTOS DA LISTA #####\n");
+                printf("Elementos da lista:\n");
+                exibir_lista(p);
                 break;
 
             case 6:
