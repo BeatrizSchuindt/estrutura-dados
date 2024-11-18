@@ -78,6 +78,29 @@ int remover_inicio(Lista *p) {
     return 1;
 }
 
+int remover_meio(Lista *p, int id) {
+    if (*p == NULL)
+        return 0;
+
+    No *ant = NULL, *atual = *p;
+    while (atual != NULL && atual->item.id != id) {
+        ant = atual;
+        atual = atual->prox;
+    }
+
+    if (atual == NULL) 
+        return 0;
+
+    if (ant == NULL) { 
+        *p = atual->prox;
+    } else {
+        ant->prox = atual->prox;
+    }
+    free(atual->item.nome);
+    free(atual);
+    return 1;
+}
+
 int remover_final(Lista *p) {
     if (*p == NULL)
         return 0;
