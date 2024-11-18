@@ -115,7 +115,9 @@ int main() {
 
             case 10:
                 printf("\nVocê digitou a opção 10!");
-                printf("\n##### DESTRUIR LISTA #####");
+                printf("\n##### DESTRUIR LISTA #####\n");
+                destruir_lista(&p);
+                printf("Lista destruída!\n");
                 break;
 
             default:
