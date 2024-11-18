@@ -15,7 +15,7 @@ typedef struct no {
 typedef No *Lista;
 
 Lista criar_lista();//criar
-//inserir no início
+int inserir_inicio(Lista *p, Item x);//inserir no início
 //inserir no final
 //inserir de forma ordenada
 //exibir elementos
