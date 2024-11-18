@@ -14,7 +14,7 @@ typedef struct no {
 //apontador para o primeiro nó da lista
 typedef No *Lista;
 
-//criar
+Lista criar_lista();//criar
 //inserir no início
 //inserir no final
 //inserir de forma ordenada
