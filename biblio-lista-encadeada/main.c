@@ -66,6 +66,16 @@ int main() {
             case 4:
                 printf("\nVocê digitou a opção 4!");
                 printf("\n##### INSERIR ELEMENTOS DE FORMA ORDENADA #####");
+                x.nome = malloc(50 * sizeof(char));
+                printf("Digite o ID: ");
+                scanf("%d", &x.id);
+                printf("Digite o Nome: ");
+                scanf(" %[^\n]", x.nome);
+                if (inserir_ordenado(&p, x)) {
+                    printf("Elemento inserido de forma ordenada com sucesso!\n");
+                } else {
+                    printf("Erro ao inserir elemento.\n");
+                }
                 break;
 
             case 5:
