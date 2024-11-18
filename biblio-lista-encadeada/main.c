@@ -17,8 +17,9 @@ int main() {
         printf("\n   6- REMOVER elemento no INÍCIO da lista");
         printf("\n   7- REMOVER elemento no MEIO da lista");
         printf("\n   8- REMOVER elemento no FINAL da lista");
-        printf("\n   9- BUSCAR/PERTINÊNCIA de elemento na lista");
-        printf("\n  10- DESTRUIR a lista");
+        printf("\n   9- TAMANHO da lista");
+        printf("\n   10- BUSCAR/PERTINÊNCIA de elemento na lista");
+        printf("\n   11- DESTRUIR a lista");
         printf("\n   0- SAIR\n");
         printf("\nAo clicar outra opção, você sai do programa.\n");
 
@@ -164,6 +165,12 @@ int main() {
 
             case 9:
                 printf("\nVocê digitou a opção 9!");
+                printf("\n##### TAMANHO DA LISTA #####\n");
+                printf("Tamanho da lista: %d\n", tamanho_lista(p));
+                break;
+            
+            case 10:
+                printf("\nVocê digitou a opção 9!");
                 printf("\n##### BUSCAR ELEMENTOS DA LISTA #####\n");
                 if (lista_vazia(p)) {
                     printf("A lista está vazia. Não há elementos para buscar.\n");
@@ -178,7 +185,7 @@ int main() {
                 }
                 break;
 
-            case 10:
+            case 11:
                 printf("\nVocê digitou a opção 10!");
                 printf("\n##### DESTRUIR LISTA #####\n");
                 if (lista_vazia(p)) {
