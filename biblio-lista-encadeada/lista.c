@@ -78,3 +78,13 @@ int buscar(Lista p, int id, Item *resultado) {
     }
     return 0;
 }
+
+void destruir_lista(Lista *p) {
+    No *aux;
+    while (*p != NULL) {
+        aux = *p;
+        *p = (*p)->prox;
+        free(aux->item.nome);
+        free(aux);
+    }
+}
