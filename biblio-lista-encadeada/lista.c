@@ -121,6 +121,18 @@ int remover_final(Lista *p) {
     return 1;
 }
 
+int tamanho_lista(Lista p){
+    if(p == NULL)
+        return 0;
+    int cont = 0;
+    Lista aux = p;
+    while(aux != NULL){
+        cont++;
+        aux = aux->prox;
+    }
+    return cont;
+}
+
 int buscar(Lista p, int id, Item *resultado) {
     No *aux = p;
     while (aux != NULL) {
