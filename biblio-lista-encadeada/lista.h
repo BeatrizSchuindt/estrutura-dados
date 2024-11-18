@@ -22,6 +22,7 @@ void exibir_lista(Lista p);//exibir elementos
 int remover_inicio(Lista *p);//remover do início
 int remover_final(Lista *p);//remover do final
 int remover_meio(Lista *p, int id);//remover do meio
+int tamanho_lista(Lista p);//tamanho da lista
 int buscar(Lista p, int id, Item *resultado);//buscar elemento
 void destruir_lista(Lista *p);//destruir a lista
 
