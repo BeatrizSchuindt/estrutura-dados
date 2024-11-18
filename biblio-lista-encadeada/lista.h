@@ -18,7 +18,7 @@ Lista criar_lista();//criar
 int inserir_inicio(Lista *p, Item x);//inserir no início
 //inserir no final
 //inserir de forma ordenada
-//exibir elementos
+void exibir_lista(Lista p);//exibir elementos
 //remover do início
 //remover do final
 //remover do meio
