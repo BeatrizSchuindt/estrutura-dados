@@ -18,6 +18,26 @@ int inserir_inicio(Lista *p, Item x) {
     return 1;
 }
 
+int inserir_final(Lista *p, Item x) {
+    No *novo = (No *)malloc(sizeof(No));
+    if (novo == NULL)
+        return 0;
+
+    novo->item = x;
+    novo->prox = NULL;
+
+    if (*p == NULL) {
+        *p = novo;
+    } else {
+        No *aux = *p;
+        while (aux->prox != NULL) {
+            aux = aux->prox;
+        }
+        aux->prox = novo;
+    }
+    return 1;
+}
+
 void exibir_lista(Lista p) {
     No *aux = p;
     while (aux != NULL) {
