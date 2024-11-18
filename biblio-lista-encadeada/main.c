@@ -50,7 +50,17 @@ int main() {
 
             case 3:
                 printf("\nVocê digitou a opção 3!");
-                printf("\n##### INSERIR ELEMENTOS NO FINAL #####");
+                printf("\n##### INSERIR ELEMENTOS NO FINAL #####\n");
+                x.nome = malloc(50 * sizeof(char));
+                printf("Digite o ID: ");
+                scanf("%d", &x.id);
+                printf("Digite o Nome: ");
+                scanf(" %[^\n]", x.nome);
+                if (inserir_final(&p, x)) {
+                    printf("Elemento inserido no final com sucesso!\n");
+                } else {
+                    printf("Erro ao inserir elemento.\n");
+                }
                 break;
 
             case 4:
