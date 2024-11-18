@@ -88,7 +88,12 @@ int main() {
 
             case 6:
                 printf("\nVocê digitou a opção 6!");
-                printf("\n##### REMOVER ELEMENTOS DO INÍCIO #####");
+                printf("\n##### REMOVER ELEMENTOS DO INÍCIO #####\n");
+                if (remover_inicio(&p)) {
+                    printf("Elemento no início removido com sucesso!\n");
+                } else {
+                    printf("Erro ao remover elemento ou lista vazia.\n");
+                }
                 break;
 
             case 7:
