@@ -4,9 +4,8 @@
 #include "lista.h"
 
 int main() {
-    int opcao=1;
+    int opcao=1, id=0, confirmacao=0;
     Item x;
-    int id;
 
     while (opcao != 0) {
         printf("\n---------- MENU DE LISTA ENCADEADA ----------");
@@ -100,10 +99,19 @@ int main() {
                 printf("\n##### REMOVER ELEMENTOS DO INÍCIO #####\n");
                 if (lista_vazia(p)) {
                     printf("A lista está vazia. Não há elementos para remover.\n");
-                } else if (remover_inicio(&p)) {
-                    printf("Elemento no início removido com sucesso!\n");
                 } else {
-                    printf("Erro ao remover elemento.\n");
+                    printf("\nDeseja realmente remover o primeiro elemento?\n  1 - Sim\n  0 - Não\n");
+                    printf("Digite sua escolha: ");
+                    scanf("%d", &confirmacao);
+                    if (confirmacao) {
+                        if (remover_inicio(&p)) {
+                            printf("Elemento no início removido com sucesso!\n");
+                        } else {
+                            printf("Erro ao remover elemento.\n");
+                        }
+                    } else {
+                        printf("Operação cancelada pelo usuário.\n");
+                    }
                 }
                 break;
 
@@ -115,10 +123,19 @@ int main() {
                 } else {
                     printf("Digite o ID do elemento a ser removido: ");
                     scanf("%d", &id);
-                    if (remover_meio(&p, id)) {
-                        printf("Elemento com ID %d removido com sucesso!\n", id);
+
+                    printf("\nDeseja realmente remover o elemento com ID %d?\n  1 - Sim\n  0 - Não\n", id);
+                    printf("Digite sua escolha: ");
+                    scanf("%d", &confirmacao);
+
+                    if (confirmacao) {
+                        if (remover_meio(&p, id)) {
+                            printf("Elemento com ID %d removido com sucesso!\n", id);
+                        } else {
+                            printf("Elemento com ID %d não encontrado ou erro ao remover.\n", id);
+                        }
                     } else {
-                        printf("Elemento com ID %d não encontrado ou erro ao remover.\n", id);
+                        printf("Operação cancelada pelo usuário.\n");
                     }
                 }
                 break;
@@ -128,10 +145,20 @@ int main() {
                 printf("\n##### REMOVER ELEMENTOS DO FINAL #####\n");
                 if (lista_vazia(p)) {
                     printf("A lista está vazia. Não há elementos para remover.\n");
-                } else if (remover_final(&p)) {
-                    printf("Elemento no final removido com sucesso!\n");
                 } else {
-                    printf("Erro ao remover elemento.\n");
+                    printf("\nDeseja realmente remover o último elemento?\n  1 - Sim\n  0 - Não\n");
+                    printf("Digite sua escolha: ");
+                    scanf("%d", &confirmacao);
+
+                    if (confirmacao) {
+                        if (remover_final(&p)) {
+                            printf("Elemento no final removido com sucesso!\n");
+                        } else {
+                            printf("Erro ao remover elemento.\n");
+                        }
+                    } else {
+                        printf("Operação cancelada pelo usuário.\n");
+                    }
                 }
                 break;
 
@@ -154,8 +181,20 @@ int main() {
             case 10:
                 printf("\nVocê digitou a opção 10!");
                 printf("\n##### DESTRUIR LISTA #####\n");
-                destruir_lista(&p);
-                printf("Lista destruída!\n");
+                if (lista_vazia(p)) {
+                    printf("A lista já está vazia.\n");
+                } else {
+                    printf("\nDeseja realmente destruir a lista?\n  1 - Sim\n  0 - Não\n");
+                    printf("Digite sua escolha: ");
+                    scanf("%d", &confirmacao);
+
+                    if (confirmacao) {
+                        destruir_lista(&p);
+                        printf("Lista destruída!\n");
+                    } else {
+                        printf("Operação cancelada pelo usuário.\n");
+                    }
+                }
                 break;
 
             default:
