@@ -67,6 +67,17 @@ void exibir_lista(Lista p) {
     }
 }
 
+int remover_inicio(Lista *p) {
+    if (*p == NULL)
+        return 0;
+
+    No *remover = *p;
+    *p = remover->prox;
+    free(remover->item.nome);
+    free(remover);
+    return 1;
+}
+
 int buscar(Lista p, int id, Item *resultado) {
     No *aux = p;
     while (aux != NULL) {
