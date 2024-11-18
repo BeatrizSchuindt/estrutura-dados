@@ -5,6 +5,7 @@
 
 int main() {
     int opcao=1;
+    Item x;
 
     while (opcao != 0) {
         printf("\n---------- MENU DE LISTA ENCADEADA ----------");
@@ -27,14 +28,24 @@ int main() {
         switch (opcao) {
             case 1:
                 printf("\nVocê digitou a opção 1!");
-                printf("\n##### CRIAR UMA LISTA #####");
-                Lista lista = criar_lista();
+                printf("\n##### CRIAR UMA LISTA #####\n");
+                Lista p = criar_lista();
                 printf("Lista criada com sucesso!\n");
                 break;
 
             case 2:
                 printf("\nVocê digitou a opção 2!");
-                printf("\n##### INSERIR ELEMENTOS NO INÍCIO #####");
+                printf("\n##### INSERIR ELEMENTOS NO INÍCIO #####\n");
+                x.nome = malloc(50 * sizeof(char));
+                printf("Digite o ID: ");
+                scanf("%d", &x.id);
+                printf("Digite o Nome: ");
+                scanf(" %[^\n]", x.nome);
+                if (inserir_inicio(&p, x)) {
+                    printf("Elemento inserido no início com sucesso!\n");
+                } else {
+                    printf("Erro ao inserir elemento.\n");
+                }
                 break;
 
             case 3:
