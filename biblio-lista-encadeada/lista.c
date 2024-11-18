@@ -17,3 +17,11 @@ int inserir_inicio(Lista *p, Item x) {
     *p = novo;
     return 1;
 }
+
+void exibir_lista(Lista p) {
+    No *aux = p;
+    while (aux != NULL) {
+        printf("ID: %d, Nome: %s\n", aux->item.id, aux->item.nome);
+        aux = aux->prox;
+    }
+}
