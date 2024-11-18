@@ -23,4 +23,4 @@ void exibir_lista(Lista p);//exibir elementos
 //remover do final
 //remover do meio
 int buscar(Lista p, int id, Item *resultado);//buscar elemento
-//destruir a lista
+void destruir_lista(Lista *p);//destruir a lista
