@@ -4,8 +4,7 @@
 #include "lista.h"
 
 int main() {
-    int opcao = 1;
-
+    int opcao=1;
 
     while (opcao != 0) {
         printf("\n---------- MENU DE LISTA ENCADEADA ----------");
@@ -29,6 +28,8 @@ int main() {
             case 1:
                 printf("\nVocê digitou a opção 1!");
                 printf("\n##### CRIAR UMA LISTA #####");
+                Lista lista = criar_lista();
+                printf("Lista criada com sucesso!\n");
                 break;
 
             case 2:
