@@ -66,3 +66,15 @@ void exibir_lista(Lista p) {
         aux = aux->prox;
     }
 }
+
+int buscar(Lista p, int id, Item *resultado) {
+    No *aux = p;
+    while (aux != NULL) {
+        if (aux->item.id == id) {
+            *resultado = aux->item;
+            return 1;
+        }
+        aux = aux->prox;
+    }
+    return 0;
+}
