@@ -27,6 +27,11 @@ int main() {
         scanf("%d", &opcao);
 
         switch (opcao) {
+            case 0:
+                printf("\nVocê digitou a opção 0!");
+                printf("\nSaindo do programa...\n");
+            break;
+
             case 1:
                 printf("\nVocê digitou a opção 1!");
                 printf("\n##### CRIAR UMA LISTA #####\n");
