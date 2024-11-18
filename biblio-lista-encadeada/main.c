@@ -103,7 +103,12 @@ int main() {
 
             case 8:
                 printf("\nVocê digitou a opção 8!");
-                printf("\n##### REMOVER ELEMENTOS DO FINAL #####");
+                printf("\n##### REMOVER ELEMENTOS DO FINAL #####\n");
+                if (remover_final(&p)) {
+                    printf("Elemento no final removido com sucesso!\n");
+                } else {
+                    printf("Erro ao remover elemento ou lista vazia.\n");
+                }
                 break;
 
             case 9:
