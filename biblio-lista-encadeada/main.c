@@ -87,51 +87,67 @@ int main() {
             case 5:
                 printf("\nVocê digitou a opção 5!");
                 printf("\n##### EXIBIR ELEMENTOS DA LISTA #####\n");
-                printf("Elementos da lista:\n");
-                exibir_lista(p);
+                if (lista_vazia(p)) {
+                    printf("A lista está vazia.\n");
+                } else {
+                    printf("Elementos da lista:\n");
+                    exibir_lista(p);
+                }
                 break;
 
             case 6:
                 printf("\nVocê digitou a opção 6!");
                 printf("\n##### REMOVER ELEMENTOS DO INÍCIO #####\n");
-                if (remover_inicio(&p)) {
+                if (lista_vazia(p)) {
+                    printf("A lista está vazia. Não há elementos para remover.\n");
+                } else if (remover_inicio(&p)) {
                     printf("Elemento no início removido com sucesso!\n");
                 } else {
-                    printf("Erro ao remover elemento ou lista vazia.\n");
+                    printf("Erro ao remover elemento.\n");
                 }
                 break;
 
             case 7:
                 printf("\nVocê digitou a opção 7!");
                 printf("\n##### REMOVER ELEMENTOS DO MEIO #####\n");
-                printf("Digite o ID do elemento a ser removido: ");
-                scanf("%d", &id);
-                if (remover_meio(&p, id)) {
-                    printf("Elemento com ID %d removido com sucesso!\n", id);
+                if (lista_vazia(p)) {
+                    printf("A lista está vazia. Não há elementos para remover.\n");
                 } else {
-                    printf("Elemento com ID %d não encontrado ou erro ao remover.\n", id);
+                    printf("Digite o ID do elemento a ser removido: ");
+                    scanf("%d", &id);
+                    if (remover_meio(&p, id)) {
+                        printf("Elemento com ID %d removido com sucesso!\n", id);
+                    } else {
+                        printf("Elemento com ID %d não encontrado ou erro ao remover.\n", id);
+                    }
                 }
                 break;
 
             case 8:
                 printf("\nVocê digitou a opção 8!");
                 printf("\n##### REMOVER ELEMENTOS DO FINAL #####\n");
-                if (remover_final(&p)) {
+                if (lista_vazia(p)) {
+                    printf("A lista está vazia. Não há elementos para remover.\n");
+                } else if (remover_final(&p)) {
                     printf("Elemento no final removido com sucesso!\n");
                 } else {
-                    printf("Erro ao remover elemento ou lista vazia.\n");
+                    printf("Erro ao remover elemento.\n");
                 }
                 break;
 
             case 9:
                 printf("\nVocê digitou a opção 9!");
                 printf("\n##### BUSCAR ELEMENTOS DA LISTA #####\n");
-                printf("Digite o ID do elemento a buscar: ");
-                scanf("%d", &id);
-                if (buscar(p, id, &x)) {
-                    printf("Elemento encontrado: \n   ID = %d\n   Nome = %s\n", x.id, x.nome);
+                if (lista_vazia(p)) {
+                    printf("A lista está vazia. Não há elementos para buscar.\n");
                 } else {
-                    printf("Elemento com ID %d não encontrado.\n", id);
+                    printf("Digite o ID do elemento a buscar: ");
+                    scanf("%d", &id);
+                    if (buscar(p, id, &x)) {
+                        printf("Elemento encontrado: \n   ID = %d\n   Nome = %s\n", x.id, x.nome);
+                    } else {
+                        printf("Elemento com ID %d não encontrado.\n", id);
+                    }
                 }
                 break;
 
