@@ -78,6 +78,26 @@ int remover_inicio(Lista *p) {
     return 1;
 }
 
+int remover_final(Lista *p) {
+    if (*p == NULL)
+        return 0;
+
+    No *ant = NULL, *atual = *p;
+    while (atual->prox != NULL) {
+        ant = atual;
+        atual = atual->prox;
+    }
+
+    if (ant == NULL) { 
+        *p = NULL;
+    } else {
+        ant->prox = NULL;
+    }
+    free(atual->item.nome);
+    free(atual);
+    return 1;
+}
+
 int buscar(Lista p, int id, Item *resultado) {
     No *aux = p;
     while (aux != NULL) {
