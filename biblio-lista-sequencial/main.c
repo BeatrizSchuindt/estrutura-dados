@@ -29,6 +29,7 @@ int main()
         switch(opcao) {
             case 1:
                 //to do - criar verificação se há alguma lista já criada em açãos
+                //tentar fazer o tamanho da função ser dinâmicamente alocado
                 printf("\nVocê digitou a opção 1!\n");
                 printf("\n##### CRIAR UMA LISTA #####");
                 printf("\nDigite o tamanho da lista desejada: ");

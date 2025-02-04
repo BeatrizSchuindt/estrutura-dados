@@ -11,18 +11,6 @@ Lista* criar_lista() {
     return li;
 }
 
-int inserir_inicio(Lista* p, Item x) {
-    No* novo = (No*)malloc(sizeof(No));
-    if (novo == NULL) {
-        return 0; 
-    }
-
-    novo->item = x;
-    novo->prox = *p;
-    *p = novo;
-    return 1;
-}
-
 int inserir_final(Lista* p, Item x) {
     No* novo = (No*)malloc(sizeof(No));
     if (novo == NULL) {
@@ -44,31 +32,6 @@ int inserir_final(Lista* p, Item x) {
     return 1;
 }
 
-int inserir_ordenado(Lista* p, Item x) {
-    No* novo = (No*)malloc(sizeof(No));
-    if (novo == NULL) {
-        return 0; 
-    }
-
-    novo->item = x;
-    if (*p == NULL || (*p)->item.id > x.id) { 
-        novo->prox = *p;
-        *p = novo;
-    } else {
-        No* ant = NULL;
-        No* atual = *p;
-
-        while (atual != NULL && atual->item.id < x.id) {
-            ant = atual;
-            atual = atual->prox;
-        }
-
-        novo->prox = atual;
-        ant->prox = novo;
-    }
-    return 1;
-}
-
 void exibir_lista(Lista p) {
     No* aux = p;
     while (aux != NULL) {
@@ -77,43 +40,7 @@ void exibir_lista(Lista p) {
     }
 }
 
-int remover_inicio(Lista* p) {
-    if (*p == NULL) {
-        return 0; 
-    }
-
-    No* remover = *p;
-    *p = remover->prox;
-    free(remover->item.nome); 
-    free(remover); 
-    return 1;
-}
-
-int remover_final(Lista* p) {
-    if (*p == NULL) {
-        return 0; 
-    }
-
-    No* ant = NULL;
-    No* atual = *p;
-
-    while (atual->prox != NULL) { 
-        ant = atual;
-        atual = atual->prox;
-    }
-
-    if (ant == NULL) {
-        *p = NULL;
-    } else {
-        ant->prox = NULL;
-    }
-
-    free(atual->item.nome); 
-    free(atual); 
-    return 1;
-}
-
-int remover_meio(Lista* p, int id) {
+int remover_item(Lista* p, int id) {
     if (*p == NULL) {
         return 0; 
     }
@@ -156,7 +83,7 @@ int tamanho_lista(Lista p) {
     return cont;
 }
 
-int buscar(Lista p, int id, Item* resultado) {
+int buscar_item(Lista p, int id, Item* resultado) {
     No* aux = p;
 
     while (aux != NULL) {
