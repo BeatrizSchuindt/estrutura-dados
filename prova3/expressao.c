@@ -40,15 +40,64 @@ float obterValorVariavel(char nome) {
     exit(1);
 }
 
+int verificar_parenteses(const char *expr) {
+    PilhaC p = pilhaC(strlen(expr));
+
+    for (int i = 0; expr[i] != '\0'; i++) {
+        if (expr[i] == '(') {
+            empilhaC('(', p);
+        } else if (expr[i] == ')') {
+            if (vaziapC(p)) {
+                destruir_pilhaC(&p);  // Correção: passar referência
+                return 0;  // Parêntese fechado sem abertura correspondente
+            }
+            desempilhaC(p);
+        }
+    }
+
+    int balanceado = vaziapC(p);
+    destruir_pilhaC(&p);  // Correção: passar referência
+    return balanceado;
+}
+
+char *limparInfixa(char infixa[]) {
+    int tamanho = strlen(infixa);
+    char *infixa_copia = malloc(tamanho + 1);  // Correção na alocação
+
+    if (infixa_copia == NULL) {
+        printf("Erro de alocação de memória!\n");
+        exit(1);
+    }
+
+    int j = 0;
+    for (int i = 0; infixa[i] != '\0'; i++) {
+        char c = infixa[i];
+        if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '(' || c == ')' || 
+            c == '+' || c == '-' || c == '*' || c == '/') {
+            infixa_copia[j++] = c;
+        }
+    }
+    infixa_copia[j] = '\0';
+
+    if (!verificar_parenteses(infixa_copia)) {
+        
+        free(infixa_copia);  // Libera a memória antes de retornar NULL
+        return NULL;
+    }
+
+    return infixa_copia;
+}
+
+
 // função para converter expressão infixa para pós-fixa
-void infixaParaPosfixa(const char *infixa, char *posfixa) {
+void infixaParaPosfixa(char *infixa, char *posfixa) {
     PilhaC pilha = pilhaC(strlen(infixa));
     int i, j = 0;
 
     for (i = 0; infixa[i] != '\0'; i++) {
         char c = infixa[i];
 
-        if (isalpha(c)) {
+        if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122)) {
             posfixa[j++] = c;
         } else if (c == '(') {
             empilhaC(c, pilha);
@@ -57,11 +106,14 @@ void infixaParaPosfixa(const char *infixa, char *posfixa) {
                 posfixa[j++] = desempilhaC(pilha);
             }
             desempilhaC(pilha);
-        } else {
+        } else if (c == '+' || c == '-' || c == '*' || c == '/') {
             while (!vaziapC(pilha) && prioridade(topoC(pilha)) >= prioridade(c) && topoC(pilha) != '(') {
                 posfixa[j++] = desempilhaC(pilha);
             }
             empilhaC(c, pilha);
+        }
+        else {
+            continue;
         }
     }
 

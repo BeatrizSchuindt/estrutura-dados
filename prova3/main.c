@@ -7,21 +7,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <locale.h>
 #include "expressao.h"
+#include "templates_menu.h"
 
 #define MAX_EXPRESSAO 100  
 
 int main() {
+    setlocale(LC_ALL, "Portuguese");
     char infixa[MAX_EXPRESSAO] = "", posfixa[MAX_EXPRESSAO] = ""; 
     int opcao;
 
     while (1) {
-        printf("\nMENU\n");
-        printf("1 - Definir expressão infixa e converter para pós-fixa\n");
-        printf("2 - Definir valores das variáveis\n");
-        printf("3 - Avaliar expressão\n");
-        printf("4 - Sair\n");
-        printf("Escolha uma opção: ");
+        menu_principal();
         scanf("%d", &opcao);
         getchar();
 
@@ -33,14 +31,23 @@ int main() {
                 fgets(infixa, MAX_EXPRESSAO, stdin);
                 infixa[strcspn(infixa, "\n")] = 0;  
 
-                infixaParaPosfixa(infixa, posfixa);
-                printf("Expressão pós-fixa: %s\n", posfixa);
+                if (limparInfixa(infixa) == NULL)
+                {
+                    printf("Faltam parênteses de fechamento!\n");
+                    break;
+                }
+                else {
+                    infixaParaPosfixa(infixa, posfixa);
+                    printf("Expressão pós-fixa: %s\n", posfixa);
+                }
                 break;
 
             case 2:
                 if (strlen(posfixa) == 0) {
                     printf("Nenhuma expressão registrada! Defina uma expressão antes.\n");
                 } else {
+                    char *infixa_copia = limparInfixa(infixa);
+                    printf("expressão infixa: %s\n", infixa_copia);
                     definirValoresVariaveis(posfixa);
                 }
                 break;
@@ -49,6 +56,8 @@ int main() {
                 if (strlen(posfixa) == 0) {
                     printf("Nenhuma expressão registrada! Defina uma expressão antes.\n");
                 } else {
+                    char *infixa_copia = limparInfixa(infixa);
+                    printf("expressão infixa: %s\n", infixa_copia);
                     printf("Resultado: %.2f\n", avaliarExpressao(posfixa));
                 }
                 break;
