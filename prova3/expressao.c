@@ -1,6 +1,6 @@
 /******************************************************************************
     Projeto: Avaliação 3 - Avaliador de Expressões
-    Arquivo: 
+    Arquivo: expressao.c - Funções principais do programa que lidarão com a manipulação e cálculo das expressões
     Nome: Ana Beatriz Schuindt do Amaral e Matheus Henrique Moreira Louro
     Data: 15/02/25
 *******************************************************************************/

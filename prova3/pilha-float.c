@@ -1,6 +1,6 @@
 /******************************************************************************
     Projeto: Avaliação 3 - Avaliador de Expressões
-    Arquivo: 
+    Arquivo: pilha-float.c - Funções da estrutura de pilha que lidará com os números
     Nome: Ana Beatriz Schuindt do Amaral e Matheus Henrique Moreira Louro
     Data: 15/02/25
 *******************************************************************************/

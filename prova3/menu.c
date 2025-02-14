@@ -1,3 +1,10 @@
+/******************************************************************************
+    Projeto: Avaliação 3 - Avaliador de Expressões
+    Arquivo: menu.c - arquivo que contem o menu que será chamado no main
+    Nome: Ana Beatriz Schuindt do Amaral e Matheus Henrique Moreira Louro
+    Data: 15/02/25
+*******************************************************************************/
+
 #include "menu.h"
 #include "expressao.h"
 #include <stdio.h>
