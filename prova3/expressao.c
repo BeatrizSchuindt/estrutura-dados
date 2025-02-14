@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <math.h>
 #include "pilha-char.h"
 #include "pilha-float.h"
 #include "expressao.h"
@@ -25,6 +26,7 @@ int prioridade(char operador) {
     switch (operador) {
         case '+': case '-': return 1;
         case '*': case '/': return 2;
+        case '^': return 3;
         default: return 0;  
     }
 }
@@ -40,13 +42,13 @@ float obterValorVariavel(char nome) {
     exit(1);
 }
 
-int verificar_parenteses(const char *expr) {
-    PilhaC p = pilhaC(strlen(expr));
+int verificar_parenteses(const char *expressao) {
+    PilhaC p = pilhaC(strlen(expressao));
 
-    for (int i = 0; expr[i] != '\0'; i++) {
-        if (expr[i] == '(') {
+    for (int i = 0; expressao[i] != '\0'; i++) {
+        if (expressao[i] == '(') {
             empilhaC('(', p);
-        } else if (expr[i] == ')') {
+        } else if (expressao[i] == ')') {
             if (vaziapC(p)) {
                 destruir_pilhaC(&p);  // Correção: passar referência
                 return 0;  // Parêntese fechado sem abertura correspondente
@@ -63,20 +65,15 @@ int verificar_parenteses(const char *expr) {
 char *limparInfixa(char infixa[]) {
     int tamanho = strlen(infixa);
     char *infixa_copia = malloc(tamanho + 1);  // Correção na alocação
-
-    if (infixa_copia == NULL) {
-        printf("Erro de alocação de memória!\n");
-        exit(1);
-    }
-
     int j = 0;
     for (int i = 0; infixa[i] != '\0'; i++) {
         char c = infixa[i];
         if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '(' || c == ')' || 
-            c == '+' || c == '-' || c == '*' || c == '/') {
+            c == '+' || c == '-' || c == '*' || c == '/' || c == '^') {
             infixa_copia[j++] = c;
         }
     }
+
     infixa_copia[j] = '\0';
 
     if (!verificar_parenteses(infixa_copia)) {
@@ -106,7 +103,7 @@ void infixaParaPosfixa(char *infixa, char *posfixa) {
                 posfixa[j++] = desempilhaC(pilha);
             }
             desempilhaC(pilha);
-        } else if (c == '+' || c == '-' || c == '*' || c == '/') {
+        } else if (c == '+' || c == '-' || c == '*' || c == '/' || c == '^') {
             while (!vaziapC(pilha) && prioridade(topoC(pilha)) >= prioridade(c) && topoC(pilha) != '(') {
                 posfixa[j++] = desempilhaC(pilha);
             }
@@ -181,10 +178,18 @@ float avaliarExpressao(const char *posfixa) {
                 case '+': resultado = op1 + op2; break;
                 case '-': resultado = op1 - op2; break;
                 case '*': resultado = op1 * op2; break;
+                case '^':
+                    if (op1 < 0 && op2 == 0.5)
+                    {
+                        printf("Erro: Raíz quadrada de número negativo!\n");
+                        return NAN;
+                    } 
+                    resultado = pow(op1, op2);
+                    break;
                 case '/':
                     if (op2 == 0) {
                         printf("Erro: Divisão por zero!\n");
-                        exit(1);
+                        return NAN;
                     }
                     resultado = op1 / op2;
                     break;
